@@ -958,7 +958,7 @@ Tagify.prototype = {
      * see - https://stackoverflow.com/q/50957841/104380
      */
     update(){
-        if(this.settings.format == 'comma'){
+        if(this.settings.format == "comma"){
             this.DOM.originalInput.value = this.value.map(x => x['value']).join(',');
         }
         else{
