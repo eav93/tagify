@@ -48,6 +48,7 @@ Tagify.prototype = {
     },
 
     DEFAULTS : {
+        normalize           : false,
         delimiters          : ",",            // [RegEx] split tags by any of these delimiters ("null" to cancel) Example: ",| |."
         pattern             : null,           // RegEx pattern to validate input by. Ex: /[1-9]/
         maxTags             : Infinity,       // Maximum number of tags
@@ -521,12 +522,14 @@ Tagify.prototype = {
 
         // remove any child DOM elements that aren't of type TEXT (like <br>)
         normalize( node = this.DOM.input ){
-            var clone = node.cloneNode(true),
-                v = clone.innerText
-                    .replace(/\s/g, ' ')  // replace NBSPs with spaces characters
-                    .replace(/^\s+/, ""); // trimLeft
-
-            return v;
+            if(this.settings.normalize){
+                var clone = node.cloneNode(true),
+                    v = clone.innerText
+                        .replace(/\s/g, ' ')  // replace NBSPs with spaces characters
+                        .replace(/^\s+/, ""); // trimLeft
+                return v;
+            }
+            return node.innerText;
         },
 
         /**
