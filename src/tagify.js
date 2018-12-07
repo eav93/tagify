@@ -49,6 +49,7 @@ Tagify.prototype = {
 
     DEFAULTS : {
         normalize           : false,
+        format              : 'comma',
         delimiters          : ",",            // [RegEx] split tags by any of these delimiters ("null" to cancel) Example: ",| |."
         pattern             : null,           // RegEx pattern to validate input by. Ex: /[1-9]/
         maxTags             : Infinity,       // Maximum number of tags
@@ -957,9 +958,14 @@ Tagify.prototype = {
      * see - https://stackoverflow.com/q/50957841/104380
      */
     update(){
-        this.DOM.originalInput.value = this.settings.mode == 'mix' ?
-            this.DOM.input.textContent :
-            JSON.stringify(this.value)
+        if(this.settings.format == 'comma'){
+            this.DOM.originalInput.value = this.value.map(x => x['value']).join(',');
+        }
+        else{
+            this.DOM.originalInput.value = this.settings.mode == 'mix' ?
+                this.DOM.input.textContent :
+                JSON.stringify(this.value);
+        }
     },
 
     /**
