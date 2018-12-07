@@ -49,8 +49,8 @@ Tagify.prototype = {
 
     DEFAULTS : {
         normalize           : false,
-        format              : 'comma',
-        delimiters          : ",",            // [RegEx] split tags by any of these delimiters ("null" to cancel) Example: ",| |."
+        format              : "comma",
+        delimiters          : ",|;|\r|\n",            // [RegEx] split tags by any of these delimiters ("null" to cancel) Example: ",| |."
         pattern             : null,           // RegEx pattern to validate input by. Ex: /[1-9]/
         maxTags             : Infinity,       // Maximum number of tags
         callbacks           : {},             // Exposed callbacks object to be triggered on certain events
