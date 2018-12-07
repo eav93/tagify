@@ -523,7 +523,7 @@ Tagify.prototype = {
 
         // remove any child DOM elements that aren't of type TEXT (like <br>)
         normalize( node = this.DOM.input ){
-            if(this.settings.normalize){
+            if(false){
                 var clone = node.cloneNode(true),
                     v = clone.innerText
                         .replace(/\s/g, ' ')  // replace NBSPs with spaces characters
